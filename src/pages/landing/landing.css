@@ -1,0 +1,19 @@
+.landing-container {
+    display: flex;
+    border: 5px solid red;
+    width: 150rem;
+    height: 90rem;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.landing-content {
+    border: 1px solid black;
+
+}
+
+#landing-img {
+    width: 50rem;
+    height: 100%;
+}
