@@ -1,19 +1,35 @@
 .landing-container {
     display: flex;
     border: 5px solid red;
-    width: 150rem;
-    height: 90rem;
+    width: 80%;
+    min-height: 100vh;
     margin: 0 auto;
     justify-content: space-around;
-    align-items: center;
+    /* align-items: center; */
+    border-radius: 1rem;
+    ;
 }
 
 .landing-content {
     border: 1px solid black;
+    width: 50%;
+    height: 100%;
+    min-height: 80vh;
+    text-align: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 
+/* .image-container {
+    display: grid;
+    place-items: center;
+} */
+
 #landing-img {
-    width: 50rem;
+    width: 50%;
     height: 100%;
+
 }
