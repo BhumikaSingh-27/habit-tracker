@@ -1,15 +1,27 @@
-html,body{
-  height:100%;
+html,
+body {
+  height: 100%;
   /* width: 100%; */
   /* font-size: 62.5%; */
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+:root {
+  --clr-primary: rgba(53, 40, 202, 0.08);
+  --clr-secondary: rgba(255, 255, 255, 1);
+}
+
+.primary {
+  color: var(--clr-primary)
 }

@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="landing-container">
       <div className="landing-content">
         <h1>
-          <span>My</span>Website
+          <span className="primary">My</span>Website
         </h1>
         <div>
           <h2>Meet your modern</h2>
@@ -22,6 +22,7 @@ const LandingPage = () => {
           <p>Already have an account?</p>
         </div>
       </div>
+
       <div className="image-container">
         <img
           id="landing-img"
