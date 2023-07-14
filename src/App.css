@@ -29,6 +29,10 @@ body {
   color: var(--clr-secondary);
 }
 
+.bg-clr-primary {
+  background-color: var(--clr-primary);
+}
+
 h1 {
   font-size: 3rem;
 }

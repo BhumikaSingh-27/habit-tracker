@@ -1,16 +1,15 @@
 import "./App.css";
-import HabitCard from "./components/HabitCard/HabitCard";
-import Header from "./components/header/Header";
-import Sidebar from "./components/sidebar/Sidebar";
+import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/landing/LandingPage";
+import LoginPage from "./pages/login/LoginPage";
 
 function App() {
   return (
     <div className="App">
-      {/* <LandingPage /> */}
-      {/* <Header />
-      <Sidebar /> */}
-      <HabitCard />
+      <Routes>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
+      </Routes>
     </div>
   );
 }

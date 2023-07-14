@@ -1,8 +1,11 @@
 import React from "react";
 import "./landing.css";
 import Button from "../../components/button/Button";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+  
   return (
     <div className="landing-main">
     <div className="landing-container">
@@ -18,7 +21,7 @@ const LandingPage = () => {
             efficiency without efforts.
           </p>
         </div>
-        <div>
+        <div onClick={()=>navigate("/login")}>
           <Button text={"Join Now"} />
           <p className="primary">Already have an account?</p>
         </div>
