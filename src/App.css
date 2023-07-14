@@ -1,8 +1,7 @@
 html,
 body {
   height: 100%;
-  /* width: 100%; */
-  /* font-size: 62.5%; */
+  background-color: var(--clr-secondary);
 }
 
 * {
@@ -18,10 +17,18 @@ body {
 }
 
 :root {
-  --clr-primary: rgba(53, 40, 202, 0.08);
-  --clr-secondary: rgba(255, 255, 255, 1);
+  --clr-primary: #5348C7;
+  --clr-secondary: #d0d0d0f0;
 }
 
 .primary {
   color: var(--clr-primary)
+}
+
+.secondary {
+  color: var(--clr-secondary);
+}
+
+h1 {
+  font-size: 3rem;
 }

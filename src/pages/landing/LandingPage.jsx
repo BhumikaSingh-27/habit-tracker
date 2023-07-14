@@ -4,6 +4,7 @@ import Button from "../../components/button/Button";
 
 const LandingPage = () => {
   return (
+    <div className="landing-main">
     <div className="landing-container">
       <div className="landing-content">
         <h1>
@@ -11,7 +12,7 @@ const LandingPage = () => {
         </h1>
         <div>
           <h2>Meet your modern</h2>
-          <span>Habit Tracker App</span>
+          <h2 className="primary">Habit Tracker App</h2>
           <p>
             Manage your daily tasks and workflow in a modeern way and boost your
             efficiency without efforts.
@@ -19,7 +20,7 @@ const LandingPage = () => {
         </div>
         <div>
           <Button text={"Join Now"} />
-          <p>Already have an account?</p>
+          <p className="primary">Already have an account?</p>
         </div>
       </div>
 
@@ -30,6 +31,7 @@ const LandingPage = () => {
           alt=""
         />
       </div>
+    </div>
     </div>
   );
 };
