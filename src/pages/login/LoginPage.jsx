@@ -11,29 +11,31 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="login-main">
       <div className="login-page">
         <div className="login-container">
           <h3>Sign In</h3>
           <div className="login-element">
             <label>Email:</label>{" "}
             <input
-              value=""
+             
               className="input-element"
               type="text"
               placeholder="Enter email"
               required
             />
             <label>Password:</label>
+            <div className="password-div">
             <input
-              value=""
-              className="input-element"
+        
+              className="input-element password-div-input"
               type={showPassword ? "text" : "password"}
               placeholder="***********"
               required
             />
             <div className="password-icon login-icon" onClick={tooglePassword}>
               {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </div>
             </div>
             <button className="login-btn bg-clr-primary">Login</button>
             <button className="login-btn secondary">Login as a Guest</button>
