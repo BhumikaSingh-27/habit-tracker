@@ -8,15 +8,16 @@ import CountCard from "./components/countCard/CountCard";
 import Profile from "./components/Profile/Profile";
 import NewHabit from "./components/newHabit/NewHabit";
 import Home from "./pages/home/Home";
+import Label from "./pages/label/Label";
 
 function App() {
   return (
     <div className="App">
-   <Header />
-   <div className="section">
-    <Sidebar />
-    <Home />
-      {/* <Routes>
+      <Header />
+      <div className="section">
+        <Sidebar />
+        <Label />
+        {/* <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
       </Routes> */}
