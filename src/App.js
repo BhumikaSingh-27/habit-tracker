@@ -7,20 +7,20 @@ import HabitCard from "./components/HabitCard/HabitCard";
 import CountCard from "./components/countCard/CountCard";
 import Profile from "./components/Profile/Profile";
 import NewHabit from "./components/newHabit/NewHabit";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
-      {/* <HabitCard /> */}
-      {/* <CountCard />
-      <Profile /> */}
-      {/* <Sidebar /> */}
-      <NewHabit />
+   <Header />
+   <div className="section">
+    <Sidebar />
+    <Home />
       {/* <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
       </Routes> */}
+      </div>
     </div>
   );
 }

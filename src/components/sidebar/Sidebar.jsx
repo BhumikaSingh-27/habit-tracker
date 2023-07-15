@@ -12,7 +12,9 @@ const Sidebar = () => {
       <div className="nav-container">
         <div className="nav-content-container">
           <div className="nav-content">
-            <div><AiOutlineHome /> </div>
+            <div>
+              <AiOutlineHome />{" "}
+            </div>
             <div>Home</div>
           </div>
           <div className="nav-content">
@@ -28,21 +30,22 @@ const Sidebar = () => {
             Trash
           </div>
         </div>
-
-        <div className="nav-profile-info">
-          <div className="nav-profile">
-            <img
-              src="https://res.cloudinary.com/dgoldjr3g/image/upload/v1687433601/NegProjects/SocialMedia/girl_pbevto.png"
-              alt=""
-              className="nav-profile-pic"
-            />
-            <div>
-              <h4>name</h4>
-              <span>@username</span>
+        <div className="nav-profile-container">
+          <div className="nav-profile-info">
+            <div className="nav-profile">
+              <img
+                src="https://res.cloudinary.com/dgoldjr3g/image/upload/v1687433601/NegProjects/SocialMedia/girl_pbevto.png"
+                alt=""
+                className="nav-profile-pic"
+              />
+              <div>
+                <h4>name</h4>
+                <span>@username</span>
+              </div>
             </div>
-          </div>
-          <div className="logout">
-            <AiOutlineLogout />
+            <div className="logout">
+              <AiOutlineLogout />
+            </div>
           </div>
         </div>
       </div>
