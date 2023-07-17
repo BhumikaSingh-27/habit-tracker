@@ -1,15 +1,15 @@
-import React from "react";
-import HabitCard from "../../components/HabitCard/HabitCard";
-import SearchBar from "../../components/searchbar/SearchBar";
+import React from 'react'
+import HabitCard from '../../components/HabitCard/HabitCard'
+import SearchBar from '../../components/searchbar/SearchBar'
 
-const Archive = () => {
+const Trash = () => {
   return (
     <div className="label-container">
       <div>
         <SearchBar />
       </div>
       <div>
-        <h2 className="padding-1">Archive</h2>
+        <h2 className="padding-1">Trash</h2>
         <div className="count-container">
           <HabitCard />
           <HabitCard />
@@ -18,7 +18,7 @@ const Archive = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Archive;
+export default Trash

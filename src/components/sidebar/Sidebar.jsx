@@ -5,8 +5,11 @@ import { MdLabelOutline } from "react-icons/md";
 import { BsArchive } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import { AiOutlineLogout } from "react-icons/ai";
+import { useNavigation } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigation()
+
   return (
     <div>
       <div className="nav-container">
@@ -21,7 +24,7 @@ const Sidebar = () => {
             <MdLabelOutline />
             Labels
           </div>
-          <div className="nav-content">
+          <div className="nav-content" onClick={navigate("/")}>
             <BsArchive />
             Archive
           </div>

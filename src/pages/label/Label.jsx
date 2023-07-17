@@ -1,12 +1,17 @@
 import React from "react";
-import  SearchBar  from "../../components/searchbar/SearchBar";
+import SearchBar from "../../components/searchbar/SearchBar";
 import "./label.css";
+import LabelCard from "../../components/labelCard/LabelCard";
 
 const Label = () => {
   return (
-    <div>
+    <div className="label-container">
       <div>
         <SearchBar />
+      </div>
+      <div>
+        <LabelCard />
+        <LabelCard />
       </div>
     </div>
   );
