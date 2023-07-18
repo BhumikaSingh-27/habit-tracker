@@ -1,6 +1,7 @@
 .login-main {
     display: flex;
     height: 100vh;
+    width: 100vw;
     justify-content: center;
     align-items: center;
 }
@@ -34,34 +35,43 @@
     padding: 1rem;
 }
 
+.login-element label {
+    font-size: 1.2rem;
+}
+
 .input-element {
     height: 3rem;
     width: 100%;
     border: 1px solid var(--clr-secondary);
     margin-bottom: 1rem;
-    padding: 0px 20px 0px 20px;
+    padding: 0.5rem;
     font-weight: 400px;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     font-size: 1rem;
 
 }
 
-.password-div{
+.password-div {
     display: flex;
     align-items: center;
     border: 1px solid var(--clr-secondary);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
+    border-radius: 0.3rem;
+    /* padding: 0.5rem; */
     height: 3rem;
 }
 
-.password-div-input{
-border:none;
-outline:none;
-margin-bottom: 0;
-height: 2rem;
+.password-div-input {
+    border: none;
+    outline: none;
+    margin-bottom: 0;
+    height: 2rem;
 }
-
+.password-icon{
+    padding-right: 0.5rem;
+}
+.password-icon:hover{
+    cursor: pointer;
+}
 .login-btn {
     font-size: 1.3rem;
     border-radius: 0.5rem;

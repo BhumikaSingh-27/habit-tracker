@@ -1,5 +1,11 @@
-.label-edit {
+.label-display {
     display: flex;
+    width: 34rem;
     justify-content: space-between;
     /* border: 1px solid black; */
+}
+
+.edit-label:hover {
+    cursor: pointer;
+
 }

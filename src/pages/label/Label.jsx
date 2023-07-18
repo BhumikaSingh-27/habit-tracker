@@ -9,7 +9,12 @@ const Label = () => {
       <div>
         <SearchBar />
       </div>
-      <div>
+      
+
+      <div className="label-list">
+      <div className="label-display label-padding">
+        <h2>Labels</h2> <h3>+Create Label</h3>
+      </div>
         <LabelCard />
         <LabelCard />
       </div>

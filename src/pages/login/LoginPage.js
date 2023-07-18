@@ -33,7 +33,7 @@ const LoginPage = () => {
               placeholder="***********"
               required
             />
-            <div className="password-icon login-icon" onClick={tooglePassword}>
+            <div className="password-icon" onClick={tooglePassword}>
               {showPassword ? <FaEye /> : <FaEyeSlash />}
             </div>
             </div>

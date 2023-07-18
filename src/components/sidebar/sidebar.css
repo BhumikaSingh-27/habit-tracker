@@ -1,6 +1,6 @@
-svg {
+/* svg {
     font-size: 2rem;
-}
+} */
 
 .nav-container {
     max-width: 20rem;
@@ -12,6 +12,7 @@ svg {
     position: sticky;
     right: 0;
     top: 0;
+
 }
 
 .nav-content-container {
@@ -49,6 +50,10 @@ svg {
     justify-content: space-between;
     /* background-color: var(--clr-secondary); */
 
+}
+
+.nav-profile-info:hover{
+    cursor: pointer;
 }
 
 .nav-profile-pic {

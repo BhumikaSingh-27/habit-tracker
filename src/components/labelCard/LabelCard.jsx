@@ -4,9 +4,9 @@ import { FaEdit } from "react-icons/fa";
 
 const LabelCard = () => {
   return (
-    <div className="label-edit">
+    <div className="label-display">
       <label htmlFor="">Label 1</label>
-      <div>
+      <div className="edit-label">
         <FaEdit />
       </div>
     </div>
