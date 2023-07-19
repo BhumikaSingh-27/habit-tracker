@@ -10,7 +10,7 @@ import Archive from "./pages/archive/Archive";
 import Home from "./pages/home/Home";
 import Trash from "./pages/trash/Trash";
 import ProfilePage from "./pages/profilePage/ProfilePage";
-
+// import NewHabit from "./components/newHabit/NewHabit"
 function App() {
   return (
     <div className="App">
@@ -27,6 +27,7 @@ function App() {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/labels" element={<Label />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
+          {/* <Route path="/edit" element={<NewHabit />}></Route> */}
         </Routes>
       </div>
     </div>

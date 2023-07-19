@@ -2,8 +2,10 @@ import React from "react";
 import "./home.css";
 import CountCard from "../../components/countCard/CountCard";
 import HabitCard from "../../components/HabitCard/HabitCard";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <div className="home-container">
       <div className="home">
@@ -20,7 +22,7 @@ const Home = () => {
         <div>
           <div className="home-heading">
             <h2>My Habits</h2>
-            <h3>+Create Habit</h3>
+            <h3 onClick={()=>navigate("/edit")}>+Create Habit</h3>
           </div>
           <p>
             <b>ACTIVE</b>
