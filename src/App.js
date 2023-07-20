@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/landing/LandingPage";
+import Mockman from "mockman-js";
 import Sidebar from "./components/sidebar/Sidebar";
 import Header from "./components/header/Header";
 import LoginPage from "./pages/login/LoginPage";
@@ -10,16 +10,17 @@ import Archive from "./pages/archive/Archive";
 import Home from "./pages/home/Home";
 import Trash from "./pages/trash/Trash";
 import ProfilePage from "./pages/profilePage/ProfilePage";
-// import NewHabit from "./components/newHabit/NewHabit"
+import LandingPage from "./pages/landing/LandingPage";
+
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <div className="section">
-        <Sidebar />
+        {/* <Sidebar /> */}
         {/* <Label /> */}
         <Routes>
-          <Route path="/" element={<Label />}></Route>
+          <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/archive" element={<Archive />}></Route>
           <Route path="/home" element={<Home />}></Route>
@@ -27,7 +28,7 @@ function App() {
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/labels" element={<Label />}></Route>
           <Route path="/profile" element={<ProfilePage />}></Route>
-          {/* <Route path="/edit" element={<NewHabit />}></Route> */}
+          <Route path="/mockman" element={<Mockman />}></Route>
         </Routes>
       </div>
     </div>

@@ -62,17 +62,23 @@
     outline: none
 }
 
+em>svg {
+    width: 1rem;
+    
+}
+
 em:hover {
     cursor: pointer;
 }
 
-.signup-nav{
+.signup-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:0.5rem;
+    gap: 0.5rem;
     padding: 1rem 0;
 }
-.signup-nav:hover{
+
+.signup-nav:hover {
     cursor: pointer;
 }
