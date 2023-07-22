@@ -51,7 +51,7 @@ export const deleteFromArchivesHandler = function (schema, request) {
  * This handler handles restoring the archived habits.
  * send POST Request at /api/archives/restore/:habitId
  * */
-
+//archive to main
 export const restoreFromArchivesHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (!user) {
@@ -81,7 +81,7 @@ export const restoreFromArchivesHandler = function (schema, request) {
  * This handler handles archiving a task
  * send POST Request at /api/archives/:habitId
  * */
-
+//main to archive
 export const archiveHabitHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   try {
