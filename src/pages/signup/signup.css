@@ -71,6 +71,11 @@ em:hover {
     cursor: pointer;
 }
 
+.signup-btn-align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .signup-nav {
     display: flex;
     align-items: center;

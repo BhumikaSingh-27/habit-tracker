@@ -1,26 +1,42 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./loginPage.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaArrowAltCircleRight, FaEyeSlash, FaEye } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { connect } from "react-redux";
 import { loginApiCall } from "../../redux/authentication/authActions";
+import toastNotify from "../../utils/toastNotify";
 
 const LoginPage = ({ loginApiCall, userData, token }) => {
   const [showPassword, setShowPassword] = useState(false);
   const email = useRef(null);
   const password = useRef(null);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const code = useSelector((state) => state.auth);
+  // console.log({code})
+  // code.subscribe();
 
   const tooglePassword = () => {
     setShowPassword((showPassword) => !showPassword);
   };
 
   const loginHandler = () => {
-    console.log("hello");
-    loginApiCall({ email: email.current, password: password.current });
-    console.log(userData, token);
+    if (email.current.value && password.current.value) {
+      loginApiCall({
+        email: email.current.value,
+        password: password.current.value,
+      });
+      // console.log("token",token)
+      if(token){
+      console.log("home");
+      navigate("/home");
+      }
+    } else {
+      if (email.current.value || password.current.value) console.log("else");
+      toastNotify("error", "Enter all the fields");
+    }
   };
+
   return (
     <div className="login-main">
       <div className="login-page">
@@ -33,7 +49,6 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
               type="text"
               placeholder="Enter email"
               ref={email}
-              onChange={(e) => (email.current = e.target.value)}
               required
             />
             <label>Password:</label>
@@ -43,7 +58,6 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
                 className="input-element password-div-input"
                 type={showPassword ? "text" : "password"}
                 placeholder="***********"
-                onChange={(e) => (password.current = e.target.value)}
                 required
               />
               <div className="password-icon" onClick={tooglePassword}>
@@ -69,9 +83,10 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
 };
 
 const mapStateToProp = (state) => {
+  console.log(state, "inside map");
   return {
-    userData: state.user,
-    token: state.encodedToken,
+    userData: state.auth.user,
+    token: state.auth.encodedToken,
   };
 };
 

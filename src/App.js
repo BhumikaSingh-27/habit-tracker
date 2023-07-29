@@ -1,5 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Mockman from "mockman-js";
 import Sidebar from "./components/sidebar/Sidebar";
 import Header from "./components/header/Header";
@@ -11,13 +13,17 @@ import Home from "./pages/home/Home";
 import Trash from "./pages/trash/Trash";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import LandingPage from "./pages/landing/LandingPage";
+import store from "./redux/Store";
+import { useSelector } from "react-redux";
 
 function App() {
+  const storeData = useSelector(state =>state.auth)
+  console.log(storeData)
   return (
     <div className="App">
-      {/* <Header /> */}
+      {storeData.encodedToken && <Header />}
       <div className="section">
-        {/* <Sidebar /> */}
+        {storeData.encodedToken && <Sidebar />}
         {/* <Label /> */}
         <Routes>
           <Route path="/" element={<LandingPage />}></Route>
@@ -31,6 +37,7 @@ function App() {
           <Route path="/mockman" element={<Mockman />}></Route>
         </Routes>
       </div>
+      <ToastContainer />
     </div>
   );
 }
