@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./loginPage.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaArrowAltCircleRight, FaEyeSlash, FaEye } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { connect } from "react-redux";
+import { useSelector,connect } from "react-redux";
 import { loginApiCall } from "../../redux/authentication/authActions";
 import toastNotify from "../../utils/toastNotify";
 

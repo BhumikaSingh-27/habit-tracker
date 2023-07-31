@@ -1,7 +1,19 @@
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(58, 53, 53, 0.516);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    overflow-y: scroll;    
+}
+
 .new-habit-container {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid; */
+    border: 1px solid;
     width: 35rem;
     background-color: white;
 }
@@ -14,11 +26,14 @@
     padding-bottom: 0;
 }
 
+.new-habit-header span:hover{
+    cursor: pointer;
+}
 .new-habit-body {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-  
+
 }
 
 .label {

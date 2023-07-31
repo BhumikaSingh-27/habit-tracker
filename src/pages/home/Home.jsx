@@ -1,11 +1,11 @@
 import React from "react";
 import "./home.css";
+import { connect } from "react-redux";
 import CountCard from "../../components/countCard/CountCard";
 import HabitCard from "../../components/HabitCard/HabitCard";
-import { useNavigate } from "react-router-dom";
+import { isCreateNewabit } from "../../redux/createHabit/habitActionCreators";
 
-const Home = () => {
-  const navigate = useNavigate()
+const Home = ({ openModal }) => {
   return (
     <div className="home-container">
       <div className="home">
@@ -22,30 +22,39 @@ const Home = () => {
         <div>
           <div className="home-heading">
             <h2>My Habits</h2>
-            <h3 onClick={()=>navigate("/edit")}>+Create Habit</h3>
+            <h3 onClick={() => openModal()}>+Create Habit</h3>
           </div>
           <p>
             <b>ACTIVE</b>
           </p>
           <div className="count-container">
-          <HabitCard />
-          <HabitCard />
-          <HabitCard />
-          <HabitCard />
+            <HabitCard />
+            <HabitCard />
+            <HabitCard />
+            <HabitCard />
+          </div>
+          <p>
+            <b>COMPLETED</b>
+          </p>
+          <div className="count-container">
+            <HabitCard />
+          </div>
         </div>
-        <p>
-          <b>COMPLETED</b>
-        </p>
-        <div className="count-container">
-          <HabitCard />
-        </div>
-        </div>
-
-        
-        
       </div>
     </div>
   );
 };
 
-export default Home;
+const mapStateToProp = (state) => {
+  return {
+    ismodal: state.habit.isCreateNewabit,
+  };
+};
+
+const mapDispatchToProp = (dispatch) => {
+  return {
+    openModal: () => dispatch(isCreateNewabit()),
+    closeModal: () => dispatch()
+  };
+};
+export default connect(mapStateToProp, mapDispatchToProp)(Home);

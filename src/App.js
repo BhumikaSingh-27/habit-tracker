@@ -15,16 +15,21 @@ import ProfilePage from "./pages/profilePage/ProfilePage";
 import LandingPage from "./pages/landing/LandingPage";
 import AuthWrapper from "./components/authWrapper/AuthWrapper";
 import { useSelector } from "react-redux";
+import NewHabit from "./components/newHabit/NewHabit";
 
 function App() {
   const storeData = useSelector((state) => state.auth);
+  const habitData = useSelector((state) => state.habit);
 
   return (
     <div className="App">
+      {habitData.isCreateHabit && <NewHabit />}
       {storeData.encodedToken && <Header />}
       <div className="section">
         {storeData.encodedToken && <Sidebar />}
         {/* <Label /> */}
+
+        
         <Routes>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
