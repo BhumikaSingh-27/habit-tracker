@@ -12,8 +12,9 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
   const email = useRef(null);
   const password = useRef(null);
   const navigate = useNavigate();
+
   const code = useSelector((state) => state.auth);
-  // console.log({code})
+  console.log({ code });
   // code.subscribe();
 
   const tooglePassword = () => {
@@ -26,16 +27,17 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
         email: email.current.value,
         password: password.current.value,
       });
-      // console.log("token",token)
-      if(token){
-      console.log("home");
-      navigate("/home");
-      }
-    } else {
-      if (email.current.value || password.current.value) console.log("else");
+    }
+    if (email.current.value || password.current.value) {
       toastNotify("error", "Enter all the fields");
     }
   };
+
+  useEffect(() => {
+    if (code.encodedToken) {
+      navigate("/home");
+    }
+  }, [code.encodedToken, navigate]);
 
   return (
     <div className="login-main">
@@ -67,7 +69,17 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
             <button className="login-btn bg-clr-primary" onClick={loginHandler}>
               Login
             </button>
-            <button className="login-btn secondary">Login as a Guest</button>
+            <button
+              className="login-btn secondary"
+              onClick={() => {
+                loginApiCall({
+                  email: "bhumika@gmail.com",
+                  password: "bhumi27",
+                });
+              }}
+            >
+              Login as a Guest
+            </button>
           </div>
 
           {/* <p>

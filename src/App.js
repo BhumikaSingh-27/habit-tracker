@@ -13,12 +13,12 @@ import Home from "./pages/home/Home";
 import Trash from "./pages/trash/Trash";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import LandingPage from "./pages/landing/LandingPage";
-import store from "./redux/Store";
+import AuthWrapper from "./components/authWrapper/AuthWrapper";
 import { useSelector } from "react-redux";
 
 function App() {
-  const storeData = useSelector(state =>state.auth)
-  console.log(storeData)
+  const storeData = useSelector((state) => state.auth);
+
   return (
     <div className="App">
       {storeData.encodedToken && <Header />}
@@ -28,12 +28,47 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/archive" element={<Archive />}></Route>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/trash" element={<Trash />}></Route>
+          <Route
+            path="/archive"
+            element={
+              <AuthWrapper>
+                <Archive />
+              </AuthWrapper>
+            }
+          ></Route>
+          <Route
+            path="/home"
+            element={
+              <AuthWrapper>
+                <Home />
+              </AuthWrapper>
+            }
+          ></Route>
+          <Route
+            path="/trash"
+            element={
+              <AuthWrapper>
+                <Trash />
+              </AuthWrapper>
+            }
+          ></Route>
           <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/labels" element={<Label />}></Route>
-          <Route path="/profile" element={<ProfilePage />}></Route>
+          <Route
+            path="/labels"
+            element={
+              <AuthWrapper>
+                <Label />
+              </AuthWrapper>
+            }
+          ></Route>
+          <Route
+            path="/profile"
+            element={
+              <AuthWrapper>
+                <ProfilePage />
+              </AuthWrapper>
+            }
+          ></Route>
           <Route path="/mockman" element={<Mockman />}></Route>
         </Routes>
       </div>

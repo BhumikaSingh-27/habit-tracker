@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./signup.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { FaEyeSlash, FaEye, FaArrowAltCircleRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { singupApiCall } from "../../redux/authentication/authActions";
@@ -14,11 +14,18 @@ const SignUp = ({ signupApiCall, userData, token }) => {
     password: "",
   });
   const navigate = useNavigate();
+  const code = useSelector((state) => state.auth);
 
   const singupHandler = (e) => {
     e.preventDefault();
     signupApiCall({ ...signupData });
   };
+
+  useEffect(() => {
+    if (code.encodedToken) {
+      navigate("/home");
+    }
+  }, [code.encodedToken, navigate]);
 
   return (
     <div className="signup-main">
