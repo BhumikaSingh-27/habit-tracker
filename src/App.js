@@ -20,7 +20,7 @@ import NewHabit from "./components/newHabit/NewHabit";
 function App() {
   const storeData = useSelector((state) => state.auth);
   const habitData = useSelector((state) => state.habit);
-
+  console.log(habitData, "app");
   return (
     <div className="App">
       {habitData.isCreateHabit && <NewHabit />}
@@ -29,7 +29,6 @@ function App() {
         {storeData.encodedToken && <Sidebar />}
         {/* <Label /> */}
 
-        
         <Routes>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>

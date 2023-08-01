@@ -4,7 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 import Button from "../button/Button";
 import HabitInfo from "./HabitInfo";
 import { closeCreateModal } from "../../redux/createHabit/habitActionCreators";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 const NewHabit = ({ closeModal }) => {
   return (
@@ -27,6 +27,7 @@ const NewHabit = ({ closeModal }) => {
     </div>
   );
 };
+
 const mapDispatchToProp = (dispatch) => {
   return {
     closeModal: () => dispatch(closeCreateModal()),

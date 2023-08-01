@@ -16,6 +16,9 @@ const habitReducer = (state = habitState, { type, payload }) => {
     case action.CREATE_MODAL_CLOSE:
       return { ...state, isCreateHabit: false };
 
+    case action.CREATE_HABIT:
+      return { ...state, habit: payload };
+
     default:
       return state;
   }

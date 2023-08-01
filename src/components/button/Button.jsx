@@ -1,12 +1,32 @@
 import React from "react";
 import "./button.css";
+import { connect, useSelector } from "react-redux";
+import {
+  closeCreateModal,
+  createNewHabit,
+} from "../../redux/createHabit/habitActionCreators";
 
-const Button = ({ text , clickHandler}) => {
+const Button = ({ text, clickHandler, closeModal }) => {
+  const createNew = useSelector((state) => state.new);
   return (
     <div>
-      <button className="button" onClick={clickHandler}>{text}</button>
+      <button
+        className="button"
+        onClick={() => {
+          clickHandler(createNew);
+          closeModal();
+        }}
+      >
+        {text}
+      </button>
     </div>
   );
 };
 
-export default Button;
+const mapDispatchToProp = (dispatch) => {
+  return {
+    clickHandler: (obj) => dispatch(createNewHabit(obj)),
+    closeModal: () => dispatch(closeCreateModal()),
+  };
+};
+export default connect(null, mapDispatchToProp)(Button);

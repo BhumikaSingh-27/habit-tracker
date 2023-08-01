@@ -94,7 +94,6 @@ const LoginPage = ({ loginApiCall, userData, token }) => {
 };
 
 const mapStateToProp = (state) => {
-  console.log(state, "inside map");
   return {
     userData: state.auth.user,
     token: state.auth.encodedToken,

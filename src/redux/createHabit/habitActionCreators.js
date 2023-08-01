@@ -1,33 +1,38 @@
 import axios from "axios";
 import toastNotify from "../../utils/toastNotify";
-import { CREATE_HABIT, CREATE_MODAL_CLOSE, CREATE_MODAL_OPEN, IS_CREATE_NEW } from "./habitTypes";
-import { useSelector } from "react-redux";
+import store from "../Store";
+import {
+  CREATE_HABIT,
+  CREATE_MODAL_CLOSE,
+  CREATE_MODAL_OPEN,
+} from "./habitTypes";
 
+export const isCreateNewabit = () => {
+  return {
+    type: CREATE_MODAL_OPEN,
+  };
+};
+export const closeCreateModal = () => {
+  return {
+    type: CREATE_MODAL_CLOSE,
+  };
+};
 
-export const isCreateNewabit = () =>{
-    return {
-        type:CREATE_MODAL_OPEN
-    }
-}
-export const closeCreateModal = () =>{
-    return {
-        type: CREATE_MODAL_CLOSE
-    }
-}
-
-export const creteHabit = (data) => {
+export const createHabit = (data) => {
   return {
     type: CREATE_HABIT,
     payload: data,
   };
 };
 
-//thunk creator for creating habit
 
+//thunk creator for creating habit
 export const createNewHabit = (habitData) => {
-  return async (state, dispatch) => {
+  const state = store.getState();
+
+  return async (dispatch) => {
     try {
-      const response = await axios(
+      const response = await axios.post(
         "/api/habits",
         { habit: { ...habitData } },
         {
@@ -36,9 +41,10 @@ export const createNewHabit = (habitData) => {
           },
         }
       );
-      console.log(response);
+      // console.log(response.data.habits);
+      dispatch(createHabit(response.data.habits))
     } catch (e) {
-      toastNotify("error", `${e.response.data.errors[0].split(".")[0]}!`);
+      console.log(e);
     }
   };
 };
