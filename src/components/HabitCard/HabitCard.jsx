@@ -1,12 +1,13 @@
 import React from "react";
 import "./habit.css";
 
-const HabitCard = () => {
+const HabitCard = ({ data }) => {
+  console.log(data.label)
   return (
     <div>
       <div className="habit-container">
         <div className="habit-title">
-          <h2>task #1</h2>{" "}
+          <h2>{data.name}</h2>{" "}
           <div className="done-tick">
             {" "}
             <svg
@@ -25,11 +26,14 @@ const HabitCard = () => {
           </div>
         </div>
         <div className="habit-label">
+          {data.label.map((ele, index) => (
+            <h5 key={index}>{ele}</h5>
+          ))}
+          {/* <h5>label</h5>
           <h5>label</h5>
-          <h5>label</h5>
-          <h5>label</h5>
+          <h5>label</h5> */}
         </div>
-        <div className="habit-description">0/2 times a day</div>
+        <div className="habit-description">0/{data.goal} a day</div>
       </div>
     </div>
   );

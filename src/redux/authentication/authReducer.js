@@ -1,8 +1,9 @@
+import { getLocalData } from "../../utils/localData";
 import { LOGIN_USER, SIGNUP_USER } from "./authActionType";
 
 const initialState = {
-  user: [],
-  encodedToken: "",
+  user: getLocalData("user") ?? [],
+  encodedToken: getLocalData("token") ?? "",
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {

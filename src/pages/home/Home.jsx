@@ -1,11 +1,13 @@
 import React from "react";
 import "./home.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import CountCard from "../../components/countCard/CountCard";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import { isCreateNewabit } from "../../redux/createHabit/habitActionCreators";
 
 const Home = ({ openModal }) => {
+  const {habit} = useSelector((state)=>state.habit)
+
   return (
     <div className="home-container">
       <div className="home">
@@ -14,6 +16,7 @@ const Home = ({ openModal }) => {
           <h3>Today</h3>
         </div>
         <div className="count-container">
+
           <CountCard />
           <CountCard />
           <CountCard />
@@ -28,16 +31,19 @@ const Home = ({ openModal }) => {
             <b>ACTIVE</b>
           </p>
           <div className="count-container">
+          {
+            habit.map(data => <HabitCard key={data._id} data={data}/>)
+          }
+            {/* <HabitCard />
             <HabitCard />
             <HabitCard />
-            <HabitCard />
-            <HabitCard />
+            <HabitCard /> */}
           </div>
           <p>
             <b>COMPLETED</b>
           </p>
           <div className="count-container">
-            <HabitCard />
+            {/* <HabitCard /> */}
           </div>
         </div>
       </div>

@@ -6,9 +6,11 @@ import { BsArchive } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import { AiOutlineLogout } from "react-icons/ai";
 import { useNavigate, useNavigation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <div>
@@ -31,7 +33,10 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="nav-profile-container">
-          <div className="nav-profile-info" onClick={()=>navigate("/profile")}>
+          <div
+            className="nav-profile-info"
+            onClick={() => navigate("/profile")}
+          >
             <div className="nav-profile">
               <img
                 src="https://res.cloudinary.com/dgoldjr3g/image/upload/v1687433601/NegProjects/SocialMedia/girl_pbevto.png"
@@ -39,8 +44,10 @@ const Sidebar = () => {
                 className="nav-profile-pic"
               />
               <div>
-                <h4>name</h4>
-                <span>@username</span>
+                <h4>
+                  {user.firstName} 
+                </h4>
+                <span>@{user.username}</span>
               </div>
             </div>
             <div className="logout">
