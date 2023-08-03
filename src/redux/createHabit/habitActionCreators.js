@@ -2,9 +2,12 @@ import axios from "axios";
 import toastNotify from "../../utils/toastNotify";
 import store from "../Store";
 import {
+  ARCHIVE,
+  COMPLETE,
   CREATE_HABIT,
   CREATE_MODAL_CLOSE,
   CREATE_MODAL_OPEN,
+  DELETE,
 } from "./habitTypes";
 
 export const isCreateNewabit = () => {
@@ -25,7 +28,6 @@ export const createHabit = (data) => {
   };
 };
 
-
 //thunk creator for creating habit
 export const createNewHabit = (habitData) => {
   const state = store.getState();
@@ -34,17 +36,42 @@ export const createNewHabit = (habitData) => {
     try {
       const response = await axios.post(
         "/api/habits",
-        { habit: { ...habitData } },
+        {
+          habit: {
+            ...habitData,
+          },
+        },
         {
           headers: {
             authorization: state.auth.encodedToken,
           },
         }
       );
-      // console.log(response.data.habits);
-      dispatch(createHabit(response.data.habits))
+      console.log(response.data.habits);
+      dispatch(createHabit(response.data.habits));
     } catch (e) {
       console.log(e);
     }
+  };
+};
+
+export const complete = (data) => {
+  return {
+    type: COMPLETE,
+    payload: data,
+  };
+};
+
+export const deleteTask = (data) => {
+  return {
+    type: DELETE,
+    payload: data,
+  };
+};
+
+export const archive = (data) => {
+  return {
+    type: ARCHIVE,
+    payload: data,
   };
 };

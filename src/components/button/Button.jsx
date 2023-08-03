@@ -13,7 +13,12 @@ const Button = ({ text, clickHandler, closeModal }) => {
       <button
         className="button"
         onClick={() => {
-          clickHandler(createNew);
+          clickHandler({
+            ...createNew,
+            completed: false,
+            archive: false,
+            trash: false,
+          });
           closeModal();
         }}
       >

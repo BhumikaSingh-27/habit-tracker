@@ -43,6 +43,6 @@ h1 {
 .section{
   display: flex;
   width: 100%;
-  gap:3rem
+  /* gap:3rem */
   /* justify-content: space-between; */
 }

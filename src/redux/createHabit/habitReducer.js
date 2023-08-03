@@ -19,6 +19,14 @@ const habitReducer = (state = habitState, { type, payload }) => {
     case action.CREATE_HABIT:
       return { ...state, habit: payload };
 
+    case action.COMPLETE:
+      return {
+        ...state,
+        habit: state.habit.map((data) =>
+          data._id === payload ? { ...data, completed: true } : data
+        ),
+      };
+
     default:
       return state;
   }

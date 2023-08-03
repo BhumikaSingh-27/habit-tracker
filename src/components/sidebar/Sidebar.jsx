@@ -5,12 +5,14 @@ import { MdLabelOutline } from "react-icons/md";
 import { BsArchive } from "react-icons/bs";
 import { BsTrash3 } from "react-icons/bs";
 import { AiOutlineLogout } from "react-icons/ai";
-import { useNavigate, useNavigation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { CLEAR_USER } from "../../redux/authentication/authActionType";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -44,13 +46,19 @@ const Sidebar = () => {
                 className="nav-profile-pic"
               />
               <div>
-                <h4>
-                  {user.firstName} 
-                </h4>
+                <h4>{user.firstname} {user.lastname}</h4>
                 <span>@{user.username}</span>
               </div>
             </div>
-            <div className="logout">
+            <div
+              className="logout"
+              onClick={(e) => {
+                e.stopPropagation();
+                localStorage.clear();
+                dispatch({ type: CLEAR_USER });
+                navigate("/");
+              }}
+            >
               <AiOutlineLogout />
             </div>
           </div>

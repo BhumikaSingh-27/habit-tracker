@@ -6,6 +6,9 @@ import {
   ADD_NAME,
   ADD_REPEAT,
   ADD_START_DATE,
+  ARCHIVE,
+  COMPLETE,
+  DELETE,
 } from "./newHabitTypes";
 
 export const addName = (data) => {
@@ -53,3 +56,4 @@ export const addLabel = (data) => {
     payload: data,
   };
 };
+

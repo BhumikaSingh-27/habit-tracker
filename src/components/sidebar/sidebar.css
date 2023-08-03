@@ -4,7 +4,7 @@
 
 .nav-container {
     max-width: 20rem;
-    min-width: 10rem;
+    min-width: 18rem;
     min-height: 90vh;
     display: flex;
     flex-direction: column;

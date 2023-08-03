@@ -9,6 +9,9 @@ const initialState = {
   repeat: "daily",
   color: "blue",
   label: [],
+  completed:false,
+  archive:false,
+  trash:false
 };
 
 export const newHabitReducer = (state = initialState, { type, payload }) => {
@@ -30,6 +33,7 @@ export const newHabitReducer = (state = initialState, { type, payload }) => {
       return { ...state, color: payload };
     case actions.ADD_LABEL:
       return { ...state, label: [...state.label, payload] };
+
     default:
       return state;
   }

@@ -20,6 +20,7 @@ import NewHabit from "./components/newHabit/NewHabit";
 function App() {
   const storeData = useSelector((state) => state.auth);
   const habitData = useSelector((state) => state.habit);
+  console.log(habitData);
   return (
     <div className="App">
       {habitData.isCreateHabit && <NewHabit />}
