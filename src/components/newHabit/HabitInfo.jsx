@@ -19,7 +19,6 @@ const HabitInfo = ({
   addRepeat,
   addLabel,
 }) => {
-  
   return (
     <div className="new-habit-body">
       <p className="label">Name</p>
