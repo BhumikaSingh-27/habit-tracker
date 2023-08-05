@@ -1,5 +1,4 @@
 import axios from "axios";
-import toastNotify from "../../utils/toastNotify";
 import store from "../Store";
 import {
   ARCHIVE,
@@ -8,6 +7,8 @@ import {
   CREATE_MODAL_CLOSE,
   CREATE_MODAL_OPEN,
   DELETE,
+  EDIT_MODAL_CLOSE,
+  EDIT_MODAL_OPEN,
 } from "./habitTypes";
 
 export const isCreateNewabit = () => {
@@ -20,6 +21,18 @@ export const closeCreateModal = () => {
     type: CREATE_MODAL_CLOSE,
   };
 };
+
+export const isEditModal = () => {
+  return {
+    type: EDIT_MODAL_OPEN,
+  };
+};
+export const closeEditModal = () => {
+  return {
+    type: EDIT_MODAL_CLOSE,
+  };
+};
+
 
 export const createHabit = (data) => {
   return {

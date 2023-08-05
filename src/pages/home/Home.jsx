@@ -3,12 +3,17 @@ import "./home.css";
 import { connect, useSelector } from "react-redux";
 import CountCard from "../../components/countCard/CountCard";
 import HabitCard from "../../components/HabitCard/HabitCard";
-import { isCreateNewabit } from "../../redux/createHabit/habitActionCreators";
+import {
+  closeEditModal,
+  isCreateNewabit,
+  isEditModal,
+} from "../../redux/createHabit/habitActionCreators";
+import { setEditData } from "../../redux/newHabit/newHabitActionCreators";
 
-const Home = ({ openModal }) => {
+const Home = ({ openModal, openEditModal, callEditApi }) => {
   const { habit } = useSelector((state) => state.habit);
   const { user } = useSelector((state) => state.auth);
-  const habitCompleted = habit?.filter(({ completed }) => completed)
+  const habitCompleted = habit?.filter(({ completed }) => completed);
   const countProgress = habit?.filter(({ completed }) => !completed);
 
   return (
@@ -37,7 +42,16 @@ const Home = ({ openModal }) => {
           </p>
           <div className="count-container">
             {countProgress.map((data) => (
-              <HabitCard key={data._id} data={data} />
+              <div
+                key={data._id}
+                onClick={() => {
+                  openEditModal();
+                  callEditApi(data._id);
+                }}
+              >
+                {" "}
+                <HabitCard key={data._id} data={data} />{" "}
+              </div>
             ))}
           </div>
           <p>
@@ -45,8 +59,8 @@ const Home = ({ openModal }) => {
           </p>
           <div className="count-container">
             {habitCompleted?.map((data) => (
-                <HabitCard key={data._id} data={data} />
-              ))}
+              <HabitCard key={data._id} data={data} />
+            ))}
           </div>
         </div>
       </div>
@@ -63,7 +77,9 @@ const mapStateToProp = (state) => {
 const mapDispatchToProp = (dispatch) => {
   return {
     openModal: () => dispatch(isCreateNewabit()),
-    closeModal: () => dispatch(),
+    openEditModal: () => dispatch(isEditModal()),
+    closeEditModal: () => dispatch(closeEditModal()),
+    callEditApi: (id) => dispatch(setEditData(id)),
   };
 };
 export default connect(mapStateToProp, mapDispatchToProp)(Home);

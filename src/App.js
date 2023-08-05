@@ -23,7 +23,7 @@ function App() {
   console.log(habitData);
   return (
     <div className="App">
-      {habitData.isCreateHabit && <NewHabit />}
+      {(habitData.isCreateHabit || habitData.isEditHabit) && <NewHabit />}
       {storeData.encodedToken && <Header />}
       <div className="section">
         {storeData.encodedToken && <Sidebar />}

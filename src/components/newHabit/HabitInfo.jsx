@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, connect } from "react-redux";
 import {
-  addColor,
   addEndDate,
   addGoal,
   addLabel,
@@ -14,10 +13,15 @@ const HabitInfo = ({
   addName,
   addStart,
   addEnd,
-  addColor,
   addGoal,
   addRepeat,
   addLabel,
+  name,
+  startDate,
+  endDate,
+  goal,
+  repeat,
+  label,
 }) => {
   return (
     <div className="new-habit-body">
@@ -26,68 +30,65 @@ const HabitInfo = ({
         type="text"
         placeholder="Enter name of your habit"
         className="input"
+        value={name}
         onChange={(e) => addName(e.target.value)}
       />
       <p className="label">Start Date:</p>
       <input
         type="date"
         className="input"
+        value={startDate}
         onChange={(e) => addStart(e.target.value)}
       />
       <p className="label">End Date:</p>
       <input
         type="date"
         className="input"
-        // value={newHabit.endDate}
+        value={endDate}
         onChange={(e) => addEnd(e.target.value)}
       />
       <p className="label">Goal:</p>
-      <select onChange={(e) => addGoal(e.target.value)}>
+      <select value={goal} onChange={(e) => addGoal(e.target.value)}>
+        <option value="none" disabled hidden>
+          Select an option
+        </option>
         <option value="1 times">1 times</option>
         <option value="2 times">2 times</option>
       </select>
       <p className="label">Repeat:</p>
-      <select onChange={(e) => addRepeat(e.target.value)}>
+      <select value={repeat} onChange={(e) => addRepeat(e.target.value)}>
+        <option value="none" disabled hidden>
+          Select an option
+        </option>
         <option value="daily">Daily</option>
         <option value="weekly">Weekly</option>
         <option value="monthly">Monthly</option>
-      </select>
-      <p className="label">Color:</p>
-      <select onChange={(e) => addColor(e.target.value)}>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="yellow">Yellow</option>
-        <option value="green">Green</option>
       </select>
       <p className="label">Select Labels</p>
       <div className="display-flex">
         <input
           type="checkbox"
           value="label 1"
-          onChange={(e) => addLabel(e.target.value)}
+          onChange={(e) => addLabel(e.target)}
+          checked={label?.find((ele) => ele === "label 1")}
         />
         <span>Label 1</span>
-      </div>
-      <div className="display-flex">
-        <input
-          type="checkbox"
-          value="label 2"
-          onChange={(e) => addLabel(e.target.value)}
-        />
-        <span>Label 2</span>
-      </div>
-      <div className="display-flex">
-        <input
-          type="checkbox"
-          value="label 3"
-          onChange={(e) => addLabel(e.target.value)}
-        />
-        <span>Label 3</span>
       </div>
     </div>
   );
 };
 
+const mapStateToProp = (state) => {
+  console.log(state.new);
+  return {
+    name: state.new.name,
+    startDate: state.new.startDate,
+    endDate: state.new.endDate,
+    goal: state.new.goal,
+    repeat: state.new.repeat,
+    label: state.new.label,
+  };
+};
 const mapDispatchToProp = (dispatch) => {
   return {
     addName: (data) => dispatch(addName(data)),
@@ -95,8 +96,7 @@ const mapDispatchToProp = (dispatch) => {
     addEnd: (data) => dispatch(addEndDate(data)),
     addGoal: (data) => dispatch(addGoal(data)),
     addRepeat: (data) => dispatch(addRepeat(data)),
-    addColor: (data) => dispatch(addColor(data)),
     addLabel: (data) => dispatch(addLabel(data)),
   };
 };
-export default connect(null, mapDispatchToProp)(HabitInfo);
+export default connect(mapStateToProp, mapDispatchToProp)(HabitInfo);

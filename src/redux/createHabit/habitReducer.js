@@ -14,7 +14,13 @@ const habitReducer = (state = habitState, { type, payload }) => {
     case action.CREATE_MODAL_OPEN:
       return { ...state, isCreateHabit: true };
     case action.CREATE_MODAL_CLOSE:
-      return { ...state, isCreateHabit: false };
+      return { ...state, isCreateHabit: false, isEditHabit: false };
+
+    case action.EDIT_MODAL_OPEN: {
+      return { ...state, isEditHabit: true };
+    }
+    case action.EDIT_MODAL_CLOSE:
+      return { ...state, isEditHabit: false };
 
     case action.CREATE_HABIT:
       return { ...state, habit: payload };

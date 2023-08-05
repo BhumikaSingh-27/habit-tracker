@@ -46,7 +46,9 @@ const Sidebar = () => {
                 className="nav-profile-pic"
               />
               <div>
-                <h4>{user.firstname} {user.lastname}</h4>
+                <h4>
+                  {user.firstname} {user.lastname}
+                </h4>
                 <span>@{user.username}</span>
               </div>
             </div>
@@ -54,7 +56,7 @@ const Sidebar = () => {
               className="logout"
               onClick={(e) => {
                 e.stopPropagation();
-                localStorage.clear();
+                sessionStorage.clear();
                 dispatch({ type: CLEAR_USER });
                 navigate("/");
               }}

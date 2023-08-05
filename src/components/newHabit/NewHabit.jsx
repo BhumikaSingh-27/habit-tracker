@@ -9,8 +9,9 @@ import {
 } from "../../redux/createHabit/habitActionCreators";
 import { connect, useSelector } from "react-redux";
 import toastNotify from "../../utils/toastNotify";
+import { reset } from "../../redux/newHabit/newHabitActionCreators";
 
-const NewHabit = ({ closeModal, clickHandler }) => {
+const NewHabit = ({ closeModal, clickHandler,reset }) => {
   const createNew = useSelector((state) => state.new);
 
   const submitHabit = () => {
@@ -27,6 +28,8 @@ const NewHabit = ({ closeModal, clickHandler }) => {
         trash: false,
       });
       closeModal();
+      reset()
+
     } else {
       toastNotify("error", "All fields are required!");
     }
@@ -58,6 +61,7 @@ const mapDispatchToProp = (dispatch) => {
   return {
     closeModal: () => dispatch(closeCreateModal()),
     clickHandler: (obj) => dispatch(createNewHabit(obj)),
+    reset : () => dispatch(reset())
   };
 };
 export default connect(null, mapDispatchToProp)(NewHabit);
