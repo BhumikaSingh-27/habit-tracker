@@ -8,6 +8,8 @@ import {
   addRepeat,
   addStartDate,
 } from "../../redux/newHabit/newHabitActionCreators";
+import { useEffect } from "react";
+import axios from "axios";
 
 const HabitInfo = ({
   addName,
@@ -23,6 +25,24 @@ const HabitInfo = ({
   repeat,
   label,
 }) => {
+  const [labelList, setLabelList] = useState([]);
+  const data = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get("/api/labels", {
+          headers: {
+            authorization: data.encodedToken,
+          },
+        });
+        setLabelList(res.data.labels);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, [data.encodedToken]);
+
   return (
     <div className="new-habit-body">
       <p className="label">Name</p>
@@ -65,21 +85,26 @@ const HabitInfo = ({
         <option value="monthly">Monthly</option>
       </select>
       <p className="label">Select Labels</p>
-      <div className="display-flex">
-        <input
-          type="checkbox"
-          value="label 1"
-          onChange={(e) => addLabel(e.target)}
-          checked={label?.find((ele) => ele === "label 1")}
-        />
-        <span>Label 1</span>
-      </div>
+      {labelList?.length ? (
+        labelList.map((ele, index) => (
+          <div key={index} className="display-flex">
+            <input
+              type="checkbox"
+              value={ele}
+              onChange={(e) => addLabel(e.target)}
+              checked={label?.find((item) => ele === item)}
+            />
+            <span>{ele}</span>
+          </div>
+        ))
+      ) : (
+        <h4>Create label to select</h4>
+      )}
     </div>
   );
 };
 
 const mapStateToProp = (state) => {
-  console.log(state.new);
   return {
     name: state.new.name,
     startDate: state.new.startDate,

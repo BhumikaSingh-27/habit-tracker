@@ -1,11 +1,27 @@
-.label-container{
+.label-container {
     display: flex;
     flex-direction: column;
     padding: 2rem 0;
     align-items: center;
-   margin: 0 auto;
-    gap:3rem
+    margin: 0 auto;
+    gap: 3rem
 }
-.label-padding{
+
+.label-list{
+    padding: 0;
+    width: 100%;
+}
+.label-padding {
+    width:100%;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.show-label {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     padding: 0.5rem 0;
 }

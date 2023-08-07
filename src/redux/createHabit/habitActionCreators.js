@@ -60,7 +60,7 @@ export const createNewHabit = (habitData) => {
           },
         }
       );
-      console.log(response.data.habits);
+      // console.log(response.data.habits);
       dispatch(createHabit(response.data.habits));
     } catch (e) {
       console.log(e);

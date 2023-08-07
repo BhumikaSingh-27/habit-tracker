@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import "./label.css";
-import { FaEdit } from "react-icons/fa";
-import { AiFillDelete } from "react-icons/ai";
+
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  closeModal,
+  createLabelApi,
+} from "../../redux/label/labelActionCreators";
 
 const LabelCard = () => {
+  const [labelName, setLabelName] = useState("");
+  const label = useSelector((state) => state.label);
+  const dispatch = useDispatch();
+
   return (
     <div className="label-display">
-      <label htmlFor="">Label 1</label>
-      <div className="edit-label">
-        <div>
-          <FaEdit />
-        </div>
-        <div>
-          <AiFillDelete />
-        </div>
+      <div className="add-label">
+        <input
+          type="text"
+          placeholder="enter label name"
+          value={labelName}
+          onChange={(e) => setLabelName(e.target.value)}
+        />
+        <button
+          className="add-btn"
+          onClick={() => {
+            dispatch(closeModal());
+            dispatch(createLabelApi(labelName));
+          }}
+        >
+          Add
+        </button>
+        {/* <AiFillDelete fontSize="1.5rem" /> */}
       </div>
     </div>
   );

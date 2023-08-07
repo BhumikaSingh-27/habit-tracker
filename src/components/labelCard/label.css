@@ -2,15 +2,26 @@
     display: flex;
     width: 34rem;
     justify-content: space-between;
+    padding: 2rem;
+    font-size: 1rem;
     /* border: 1px solid black; */
 }
 
-.edit-label{
+.add-label {
     display: flex;
-    justify-content: flex-end;
-    gap:1rem
+    justify-content: space-between;
+    width: 100%;
+    gap:2rem;
 }
-.edit-label:hover {
-    cursor: pointer;
+.add-label input {
+    padding: 0.5rem 1rem;
+    flex-grow: 1;
+}
 
+.add-btn{
+    padding: 0.5rem;
+}
+
+.add-btn:hover{
+    cursor: pointer;
 }

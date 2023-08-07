@@ -16,14 +16,18 @@ import LandingPage from "./pages/landing/LandingPage";
 import AuthWrapper from "./components/authWrapper/AuthWrapper";
 import { useSelector } from "react-redux";
 import NewHabit from "./components/newHabit/NewHabit";
+import Modal from "./components/modal/Modal";
 
 function App() {
   const storeData = useSelector((state) => state.auth);
   const habitData = useSelector((state) => state.habit);
-  console.log(habitData);
+  const label = useSelector((state) => state.label);
   return (
     <div className="App">
+      {/* habit modal */}
       {(habitData.isCreateHabit || habitData.isEditHabit) && <NewHabit />}
+
+      {label.isModal && <Modal />}
       {storeData.encodedToken && <Header />}
       <div className="section">
         {storeData.encodedToken && <Sidebar />}

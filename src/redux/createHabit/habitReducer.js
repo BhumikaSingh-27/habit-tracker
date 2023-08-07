@@ -23,6 +23,8 @@ const habitReducer = (state = habitState, { type, payload }) => {
       return { ...state, isEditHabit: false };
 
     case action.CREATE_HABIT:
+      console.log(payload);
+      console.log(state);
       return { ...state, habit: payload };
 
     case action.COMPLETE:

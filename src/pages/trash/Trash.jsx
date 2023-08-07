@@ -11,10 +11,10 @@ const Trash = () => {
       <div>
         <h2 className="padding-1">Trash</h2>
         <div className="count-container">
+          {/* <HabitCard />
           <HabitCard />
           <HabitCard />
-          <HabitCard />
-          <HabitCard />
+          <HabitCard /> */}
         </div>
       </div>
     </div>
