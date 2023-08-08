@@ -31,16 +31,13 @@ export const newHabitReducer = (state = initialState, { type, payload }) => {
     }
     case actions.ADD_LABEL:
       if (payload.checked) {
+        console.log({ ...state, label: [...state?.label, payload.value] });
         return { ...state, label: [...state?.label, payload.value] };
       } else {
-        if(state.label.find((ele)=>ele === payload.value)){
-          return {
-            ...state,
-            label: state.label.filter((ele) => ele !== payload.value),
-          };
-        }
-        return {...state, label:[...state]}
-       
+        return {
+          ...state,
+          label: state.label.filter((ele) => ele !== payload.value),
+        };
       }
 
     case actions.EDIT_LABEL: {

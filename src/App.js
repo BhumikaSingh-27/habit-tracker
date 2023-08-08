@@ -22,6 +22,7 @@ function App() {
   const storeData = useSelector((state) => state.auth);
   const habitData = useSelector((state) => state.habit);
   const label = useSelector((state) => state.label);
+  
   return (
     <div className="App">
       {/* habit modal */}
@@ -29,6 +30,7 @@ function App() {
 
       {label.isModal && <Modal />}
       {storeData.encodedToken && <Header />}
+
       <div className="section">
         {storeData.encodedToken && <Sidebar />}
         {/* <Label /> */}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./sidebar.css";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdLabelOutline } from "react-icons/md";
@@ -11,9 +11,14 @@ import { CLEAR_USER } from "../../redux/authentication/authActionType";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const { user, encodedToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (!encodedToken) {
+      encodedToken("/");
+    }
+  }, []);
   return (
     <div>
       <div className="nav-container">
@@ -58,7 +63,6 @@ const Sidebar = () => {
                 e.stopPropagation();
                 sessionStorage.clear();
                 dispatch({ type: CLEAR_USER });
-                navigate("/");
               }}
             >
               <AiOutlineLogout />
