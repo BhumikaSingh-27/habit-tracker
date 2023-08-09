@@ -29,9 +29,8 @@ export const newHabitReducer = (state = initialState, { type, payload }) => {
     case actions.ADD_REPEAT: {
       return { ...state, repeat: payload };
     }
-    case actions.ADD_LABEL:
+    case actions.ADD_LABEL: {
       if (payload.checked) {
-        console.log({ ...state, label: [...state?.label, payload.value] });
         return { ...state, label: [...state?.label, payload.value] };
       } else {
         return {
@@ -39,6 +38,7 @@ export const newHabitReducer = (state = initialState, { type, payload }) => {
           label: state.label.filter((ele) => ele !== payload.value),
         };
       }
+    }
 
     case actions.EDIT_LABEL: {
       return { ...state, label: payload };

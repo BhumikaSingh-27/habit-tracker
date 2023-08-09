@@ -13,6 +13,7 @@ const labelReducer = (state = initialState, { type, payload }) => {
       return { ...state, isModal: false };
     }
     case actions.CREATE_LABEL:
+      console.log(payload)
       return { ...state, labels: payload };
     default:
       return state;

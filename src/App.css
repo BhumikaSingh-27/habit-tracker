@@ -18,7 +18,8 @@ body {
 
 :root {
   --clr-primary: #5348C7;
-  --clr-secondary: #d0d0d0f0;
+  /* --clr-secondary: #d0d0d0f0; */
+  --clr-secondary: #E0E0E0;
 }
 
 .primary {
@@ -33,20 +34,21 @@ body {
   background-color: var(--clr-primary);
 }
 
-.padding-1{
+.padding-1 {
   padding: 1rem;
 }
+
 h1 {
   font-size: 3rem;
 }
 
-.section{
+.section {
   display: flex;
   width: 100%;
   /* gap:3rem */
   /* justify-content: space-between; */
 }
 
-.hover{
+.hover {
   cursor: pointer;
 }

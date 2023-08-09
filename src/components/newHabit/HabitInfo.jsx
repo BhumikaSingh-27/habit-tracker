@@ -92,7 +92,7 @@ const HabitInfo = ({
               type="checkbox"
               value={ele}
               onClick={(e) => addLabel(e.target)}
-              // checked={label?.find((item) => ele === item)}
+              checked={label?.find((item) => ele === item)}
             />
             <span>{ele}</span>
           </div>

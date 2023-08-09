@@ -1,7 +1,6 @@
 import React from "react";
 import "./habit.css";
 import { useDispatch } from "react-redux";
-import { COMPLETE } from "../../redux/createHabit/habitTypes";
 import { complete } from "../../redux/createHabit/habitActionCreators";
 
 const HabitCard = ({ data }) => {
@@ -38,7 +37,7 @@ const HabitCard = ({ data }) => {
           )}
         </div>
         <div className="habit-label">
-          {data?.label.map((ele, index) => (
+          {data?.label?.map((ele, index) => (
             <h5 key={index}>{ele}</h5>
           ))}
           {/* <h5>label</h5>
