@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     z-index: 4;
-    overflow-y: scroll;    
+    overflow-y: scroll;
 }
 
 .new-habit-container {
@@ -26,14 +26,27 @@
     padding-bottom: 0;
 }
 
-.new-habit-header span:hover{
+.new-habit-header span:hover {
     cursor: pointer;
 }
+
 .new-habit-body {
     display: flex;
     flex-direction: column;
     padding: 1rem;
 
+}
+
+.edit-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.edit-icons svg {
+    font-size: 1.3rem;
+}
+.edit-icons svg:hover {
+    color: var(--clr-primary);
 }
 
 .label {

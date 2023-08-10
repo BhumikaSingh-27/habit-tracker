@@ -3,6 +3,7 @@ import * as action from "./habitTypes";
 export const habitState = {
   isCreateHabit: false,
   isEditHabit: false,
+  editId: "",
   habit: [],
   labels: [],
   archive: [],
@@ -25,6 +26,21 @@ const habitReducer = (state = habitState, { type, payload }) => {
     case action.CREATE_HABIT:
       return { ...state, habit: payload };
 
+    case action.EDITED_DATA: {
+      const { habitData, id } = payload;
+      console.log(payload);
+      const update = state.habit.map((data) =>
+        data._id === id ? { ...data, ...habitData } : data
+      );
+      return { ...state, habit: update };
+    }
+
+    case action.EDIT_ID: {
+      return { ...state, editId: payload };
+    }
+    case action.CLEAR_EDIT_ID: {
+      return { ...state, editId: "" };
+    }
     case action.COMPLETE:
       return {
         ...state,
@@ -32,6 +48,15 @@ const habitReducer = (state = habitState, { type, payload }) => {
           data._id === payload ? { ...data, completed: true } : data
         ),
       };
+    case action.DELETE: {
+      const deletedData = state.habit.find(({ _id }) => _id === state.editId);
+      console.log(deletedData, "delete");
+      return { ...state, trash: [...state.trash, deletedData] };
+    }
+
+    case action.ARCHIVE: {
+      return { ...state, archive: payload };
+    }
 
     default:
       return state;

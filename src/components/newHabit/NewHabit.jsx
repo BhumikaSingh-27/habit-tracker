@@ -1,19 +1,25 @@
 import React from "react";
 import "./newHabit.css";
 import { RxCross1 } from "react-icons/rx";
+import { AiFillDelete } from "react-icons/ai";
+import { BiSolidArchiveIn } from "react-icons/bi";
 import Button from "../button/Button";
 import HabitInfo from "./HabitInfo";
 import {
+  archiveApi,
   closeCreateModal,
   createNewHabit,
+  deleteApi,
 } from "../../redux/createHabit/habitActionCreators";
-import { connect, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import toastNotify from "../../utils/toastNotify";
 import { reset } from "../../redux/newHabit/newHabitActionCreators";
 
 const NewHabit = ({ closeModal, clickHandler, reset }) => {
   const createNew = useSelector((state) => state.new);
   const modal = useSelector((state) => state.habit);
+  const dispatch = useDispatch();
+
   const submitHabit = () => {
     if (
       createNew.name &&
@@ -45,18 +51,33 @@ const NewHabit = ({ closeModal, clickHandler, reset }) => {
               reset();
             }}
           >
-            <RxCross1 />
+            {modal.isEditHabit ? (
+              <div className="edit-icons">
+                <div onClick={() => dispatch(deleteApi(modal.editId))}>
+                  <AiFillDelete />
+                </div>
+                <div onClick={() => dispatch(archiveApi(modal.editId))}>
+                  <BiSolidArchiveIn />
+                </div>
+                <div>
+                  <RxCross1 />
+                </div>{" "}
+              </div>
+            ) : (
+              <RxCross1 />
+            )}
           </span>
         </div>
         <hr />
         <HabitInfo />
 
-        {modal.isEditHabit && (
+        {/* {modal.isEditHabit && (
           <div>
-            <button>delete</button>
-            <button>archive</button>
+            <button className="button">delete</button>
+            <button className="button">archive</button>
           </div>
-        )}
+        )} */}
+
         <div className="btn-new">
           <button className="button" onClick={submitHabit}>
             Done

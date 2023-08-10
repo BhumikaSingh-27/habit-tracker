@@ -38,7 +38,7 @@ const HabitCard = ({ data }) => {
         </div>
         <div className="habit-label">
           {data?.label?.map((ele, index) => (
-            <h5 key={index}>{ele}</h5>
+            <span key={index}>{ele}</span>
           ))}
           {/* <h5>label</h5>
           <h5>label</h5>

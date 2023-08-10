@@ -1,12 +1,11 @@
 import * as actions from "./newHabitTypes";
 
 const initialState = {
-  id: "",
   name: "",
   startDate: "",
   endDate: "",
-  goal: "",
-  repeat: "",
+  goal: "1 times",
+  repeat: "Daily",
   label: [],
   completed: false,
   archive: false,
@@ -29,9 +28,10 @@ export const newHabitReducer = (state = initialState, { type, payload }) => {
     case actions.ADD_REPEAT: {
       return { ...state, repeat: payload };
     }
+
     case actions.ADD_LABEL: {
       if (payload.checked) {
-        return { ...state, label: [...state?.label, payload.value] };
+        return { ...state, label: [...state.label, payload.value] };
       } else {
         return {
           ...state,
@@ -44,7 +44,7 @@ export const newHabitReducer = (state = initialState, { type, payload }) => {
       return { ...state, label: payload };
     }
     case actions.RESET: {
-      return { state: initialState };
+      return { ...initialState };
     }
     default:
       return state;

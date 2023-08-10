@@ -21,8 +21,8 @@
     flex-grow: 1;
 }
 
-.habit-label h5 {
-    width: 2.5rem;
+.habit-label span {
+    width: fit-content;
     height: 1rem;
     border-radius: 5px;
     background-color: #60A5FA;

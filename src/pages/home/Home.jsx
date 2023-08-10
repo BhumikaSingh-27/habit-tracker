@@ -4,13 +4,15 @@ import { connect, useSelector } from "react-redux";
 import CountCard from "../../components/countCard/CountCard";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import {
+  addId,
+  clearEditId,
   closeEditModal,
   isCreateNewabit,
   isEditModal,
 } from "../../redux/createHabit/habitActionCreators";
 import { setEditData } from "../../redux/newHabit/newHabitActionCreators";
 
-const Home = ({ openModal, openEditModal, callEditApi }) => {
+const Home = ({ openModal, openEditModal, callEditApi, setEditId,clearEditId }) => {
   const { habit } = useSelector((state) => state.habit);
   const { user } = useSelector((state) => state.auth);
   const habitCompleted = habit?.filter(({ completed }) => completed);
@@ -35,7 +37,10 @@ const Home = ({ openModal, openEditModal, callEditApi }) => {
         <div>
           <div className="home-heading">
             <h2>My Habits</h2>
-            <h3 onClick={() => openModal()}>+Create Habit</h3>
+            <h3 onClick={() => {
+              openModal();
+              clearEditId()
+            }}>+Create Habit</h3>
           </div>
           <p>
             <b>ACTIVE</b>
@@ -47,6 +52,8 @@ const Home = ({ openModal, openEditModal, callEditApi }) => {
                 onClick={() => {
                   openEditModal();
                   callEditApi(data._id);
+                  setEditId(data._id);
+                  console.log(data._id);
                 }}
               >
                 {" "}
@@ -69,6 +76,7 @@ const Home = ({ openModal, openEditModal, callEditApi }) => {
 };
 
 const mapStateToProp = (state) => {
+  console.log(state.habit);
   return {
     ismodal: state.habit.isCreateNewabit,
   };
@@ -80,6 +88,8 @@ const mapDispatchToProp = (dispatch) => {
     openEditModal: () => dispatch(isEditModal()),
     closeEditModal: () => dispatch(closeEditModal()),
     callEditApi: (id) => dispatch(setEditData(id)),
+    setEditId: (id) => dispatch(addId(id)),
+    clearEditId: () => dispatch(clearEditId())
   };
 };
 export default connect(mapStateToProp, mapDispatchToProp)(Home);

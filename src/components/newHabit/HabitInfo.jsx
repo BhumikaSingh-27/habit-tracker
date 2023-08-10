@@ -85,7 +85,7 @@ const HabitInfo = ({
         <option value="monthly">Monthly</option>
       </select>
       <p className="label">Select Labels</p>
-      {labelList?.length ? (
+      {labelList.length !==0 ? (
         labelList.map((ele, index) => (
           <div key={index} className="display-flex">
             <input

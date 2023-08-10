@@ -10,6 +10,7 @@ import {
   ARCHIVE,
   COMPLETE,
   DELETE,
+  EDIT_ID,
   EDIT_LABEL,
   RESET,
 } from "./newHabitTypes";
@@ -61,6 +62,7 @@ export const editLabel = (data) => {
   };
 };
 
+
 //cleanup/reset
 
 export const reset = () => {
@@ -80,6 +82,7 @@ export const setEditData = (id) => {
           authorization: state.auth.encodedToken,
         },
       });
+    
       dispatch(addName(habit.name));
       dispatch(addStartDate(habit.startDate));
       dispatch(addEndDate(habit.endDate));
