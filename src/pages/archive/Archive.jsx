@@ -8,7 +8,7 @@ const Archive = () => {
   return (
     <div className="label-container">
       <div>
-        <SearchBar />
+        {/* <SearchBar /> */}
       </div>
       <div>
         <h2 className="padding-1">Archive</h2>

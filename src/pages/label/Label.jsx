@@ -14,7 +14,7 @@ const Label = () => {
   return (
     <div className="label-container">
       <div>
-        <SearchBar />
+        {/* <SearchBar /> */}
       </div>
 
       <div className="label-list">
