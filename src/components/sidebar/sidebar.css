@@ -29,8 +29,9 @@
     align-items: center;
 }
 
-.nav-content {
+.nav-content:hover{
     cursor: pointer;
+    font-weight:bold ;
 }
 
 .nav-profile {

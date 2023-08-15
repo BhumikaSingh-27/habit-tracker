@@ -37,15 +37,15 @@ const Home = ({ openModal, openEditModal, callEditApi, setEditId,clearEditId }) 
         <div>
           <div className="home-heading">
             <h2>My Habits</h2>
-            <h3 onClick={() => {
+            <h3 className="hover" onClick={() => {
               openModal();
               clearEditId()
             }}>+Create Habit</h3>
           </div>
-          <p>
+          {countProgress.length === 0 ? <h3 className="notify">Create labels and get started to track the habits!</h3> :  <><p>
             <b>ACTIVE</b>
           </p>
-          <div className="count-container">
+       <div className="count-container">
             {countProgress.map((data) => (
               <div
                 key={data._id}
@@ -68,7 +68,7 @@ const Home = ({ openModal, openEditModal, callEditApi, setEditId,clearEditId }) 
             {habitCompleted?.map((data) => (
               <HabitCard key={data._id} data={data} />
             ))}
-          </div>
+          </div></>}
         </div>
       </div>
     </div>
