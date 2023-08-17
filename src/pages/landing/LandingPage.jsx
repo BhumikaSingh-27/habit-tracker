@@ -31,7 +31,7 @@ const LandingPage = () => {
               your efficiency without efforts.
             </p>
           </div>
-          <div className="hover" onClick={() => navigate("/login")}>
+          <div onClick={() => navigate("/login")}>
             <Button text={"Join Now"} />
             <p className="primary">Already have an account?</p>
           </div>

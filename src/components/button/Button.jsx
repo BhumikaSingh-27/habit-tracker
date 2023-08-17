@@ -11,7 +11,7 @@ const Button = ({ text, clickHandler, closeModal }) => {
   return (
     <div>
       <button
-        className="button"
+        className="button hover"
         onClick={() => {
           clickHandler({
             ...createNew,

@@ -7,16 +7,13 @@ const Archive = () => {
   const state = useSelector((state) => state.habit);
   return (
     <div className="label-container">
-      <div>
-        {/* <SearchBar /> */}
-      </div>
-      <div>
-        <h2 className="padding-1">Archive</h2>
-        <div className="count-container">
-          {state.archive.map((data) => (
-            <HabitCard key={data._id} data={data} />
-          ))}
-        </div>
+      <h2 className="padding-1">Archive</h2>
+      <div className="count-container">
+        {state.archive.length === 0 ? (
+          <h3>Nothing is archived!</h3>
+        ) : (
+          state.archive.map((data) => <HabitCard key={data._id} data={data} />)
+        )}
       </div>
     </div>
   );

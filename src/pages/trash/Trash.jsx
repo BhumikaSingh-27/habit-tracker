@@ -7,16 +7,13 @@ const Trash = () => {
   const state = useSelector((state) => state.habit);
   return (
     <div className="label-container">
-      <div>
-        {/* <SearchBar /> */}
-      </div>
-      <div>
-        <h2 className="padding-1">Trash</h2>
-        <div className="count-container">
-          {state.trash.map((data) => (
-            <HabitCard key={data._id} data={data} />
-          ))}
-        </div>
+      <h2 className="padding-1">Trash</h2>
+      <div className="count-container">
+        {state.trash.length === 0 ? (
+          <h3>Trash is empty!</h3>
+        ) : (
+          state.trash.map((data) => <HabitCard key={data._id} data={data} />)
+        )}
       </div>
     </div>
   );
