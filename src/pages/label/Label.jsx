@@ -13,16 +13,12 @@ const Label = () => {
   const label = useSelector((state) => state.label);
   return (
     <div className="label-container">
-      <div>
-        {/* <SearchBar /> */}
-      </div>
-
-      <div className="label-list">
+    
         <div className="label-padding">
           <h2>Labels</h2>{" "}
           <h3 onClick={() => dispatch(createModalOpen())}>+Create Label</h3>
         </div>
-        <div>
+        <div className="list">
           {label.labels.map((ele) => (
             <div className="show-label" key={ele}>
               <h4>{ele}</h4>{" "}
@@ -36,7 +32,7 @@ const Label = () => {
           ))}
         </div>
       </div>
-    </div>
+ 
   );
 };
 

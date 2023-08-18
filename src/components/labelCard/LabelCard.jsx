@@ -18,7 +18,7 @@ const LabelCard = () => {
       <div className="add-label">
         <input
           type="text"
-          placeholder="enter label name"
+          placeholder="Enter label name"
           value={labelName}
           onChange={(e) => setLabelName(e.target.value)}
         />
