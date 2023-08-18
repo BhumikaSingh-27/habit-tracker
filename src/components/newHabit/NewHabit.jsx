@@ -79,7 +79,7 @@ const NewHabit = ({ closeModal, clickHandler, reset }) => {
         )} */}
 
         <div className="btn-new">
-          <button className="button" onClick={submitHabit}>
+          <button className="button hover" onClick={submitHabit}>
             Done
           </button>
         </div>

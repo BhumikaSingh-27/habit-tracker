@@ -16,9 +16,10 @@ const Sidebar = () => {
 
   useEffect(() => {
     if (!encodedToken) {
-      encodedToken("/");
+      console.log(encodedToken,"logout")
+      navigate("/");
     }
-  }, []);
+  }, [encodedToken,navigate]);
   return (
     <div>
       <div className="nav-container">

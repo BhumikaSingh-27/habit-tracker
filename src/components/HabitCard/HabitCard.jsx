@@ -8,7 +8,7 @@ const HabitCard = ({ data }) => {
 
   return (
     <div>
-      <div className="habit-container">
+      <div className="habit-container hover">
         <div className="habit-title">
           <h2>{data.name}</h2>{" "}
           {data?.completed ? <></>:(

@@ -5,7 +5,6 @@ export const habitState = {
   isEditHabit: false,
   editId: "",
   habit: [],
-  labels: [],
   archive: [],
   trash: [],
 };
@@ -24,6 +23,7 @@ const habitReducer = (state = habitState, { type, payload }) => {
       return { ...state, isEditHabit: false };
 
     case action.CREATE_HABIT:
+      
       return { ...state, habit: payload };
 
     case action.EDITED_DATA: {

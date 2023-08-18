@@ -21,12 +21,18 @@ const Home = ({
 }) => {
   const { habit } = useSelector((state) => state.habit);
   const { user } = useSelector((state) => state.auth);
+  const {labels} = useSelector((state)=> state.label )
   const habitCompleted = habit?.filter(({ completed }) => completed);
   const countProgress = habit?.filter(({ completed }) => !completed);
-  const time = new Date()
-  const overdueTaks = habit?.filter(({endDate})=> (new Date(endDate)).getTime() < time.getTime())
+  const time = new Date();
+  const overdueTaks = habit?.filter(
+    ({ endDate, completed }) =>
+      new Date(endDate).getTime() < time.getTime() &&
+      new Date(endDate).getTime() !== time.getTime() &&
+      completed
+  );
 
-
+  console.log(labels);
   return (
     <div className="home-container">
       <div className="home">
@@ -40,7 +46,7 @@ const Home = ({
         <div className="count-container">
           <CountCard text={"Completed"} data={habitCompleted.length} />
           <CountCard text={"In Progress"} data={countProgress.length} />
-          <CountCard text={"Overdue"}  data={overdueTaks.length}/>
+          <CountCard text={"Overdue"} data={overdueTaks.length} />
           <CountCard text={"Total"} data={habit.length} />
         </div>
         <div>
@@ -56,7 +62,7 @@ const Home = ({
               +Create Habit
             </h3>
           </div>
-          {countProgress.length === 0 ? (
+          {countProgress.length === 0 && labels.length === 0 ? (
             <h3 className="notify">
               Create labels and get started to track the habits!
             </h3>
@@ -66,7 +72,7 @@ const Home = ({
                 <b>ACTIVE</b>
               </p>
               <div className="count-container">
-                {countProgress.map((data) => (
+                {countProgress.length === 0 ? <div> Create a new Habit</div> : countProgress.map((data) => (
                   <div
                     key={data._id}
                     onClick={() => {
@@ -85,13 +91,9 @@ const Home = ({
                 <b>COMPLETED</b>
               </p>
               <div className="count-container">
-                {habitCompleted.length === 0 ? (
-                  <p> Not any! </p>
-                ) : (
-                  habitCompleted?.map((data) => (
-                    <HabitCard key={data._id} data={data} />
-                  ))
-                )}
+                {habitCompleted.length === 0 ? <div>Not any!</div> : habitCompleted?.map((data) => (
+                  <HabitCard key={data._id} data={data} />
+                ))}
               </div>
             </>
           )}
