@@ -12,11 +12,20 @@ import {
 } from "../../redux/createHabit/habitActionCreators";
 import { setEditData } from "../../redux/newHabit/newHabitActionCreators";
 
-const Home = ({ openModal, openEditModal, callEditApi, setEditId,clearEditId }) => {
+const Home = ({
+  openModal,
+  openEditModal,
+  callEditApi,
+  setEditId,
+  clearEditId,
+}) => {
   const { habit } = useSelector((state) => state.habit);
   const { user } = useSelector((state) => state.auth);
   const habitCompleted = habit?.filter(({ completed }) => completed);
   const countProgress = habit?.filter(({ completed }) => !completed);
+  const time = new Date()
+  const overdueTaks = habit?.filter(({endDate})=> (new Date(endDate)).getTime() < time.getTime())
+
 
   return (
     <div className="home-container">
@@ -31,44 +40,61 @@ const Home = ({ openModal, openEditModal, callEditApi, setEditId,clearEditId }) 
         <div className="count-container">
           <CountCard text={"Completed"} data={habitCompleted.length} />
           <CountCard text={"In Progress"} data={countProgress.length} />
-          <CountCard text={"Overdue"} />
+          <CountCard text={"Overdue"}  data={overdueTaks.length}/>
           <CountCard text={"Total"} data={habit.length} />
         </div>
         <div>
           <div className="home-heading">
             <h2>My Habits</h2>
-            <h3 className="hover" onClick={() => {
-              openModal();
-              clearEditId()
-            }}>+Create Habit</h3>
+            <h3
+              className="hover"
+              onClick={() => {
+                openModal();
+                clearEditId();
+              }}
+            >
+              +Create Habit
+            </h3>
           </div>
-          {countProgress.length === 0 ? <h3 className="notify">Create labels and get started to track the habits!</h3> :  <><p>
-            <b>ACTIVE</b>
-          </p>
-       <div className="count-container">
-            {countProgress.map((data) => (
-              <div
-                key={data._id}
-                onClick={() => {
-                  openEditModal();
-                  callEditApi(data._id);
-                  setEditId(data._id);
-                  console.log(data._id);
-                }}
-              >
-                {" "}
-                <HabitCard key={data._id} data={data} />{" "}
+          {countProgress.length === 0 ? (
+            <h3 className="notify">
+              Create labels and get started to track the habits!
+            </h3>
+          ) : (
+            <>
+              <p>
+                <b>ACTIVE</b>
+              </p>
+              <div className="count-container">
+                {countProgress.map((data) => (
+                  <div
+                    key={data._id}
+                    onClick={() => {
+                      openEditModal();
+                      callEditApi(data._id);
+                      setEditId(data._id);
+                      console.log(data._id);
+                    }}
+                  >
+                    {" "}
+                    <HabitCard key={data._id} data={data} />{" "}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <p>
-            <b>COMPLETED</b>
-          </p>
-          <div className="count-container">
-            {habitCompleted?.map((data) => (
-              <HabitCard key={data._id} data={data} />
-            ))}
-          </div></>}
+              <p>
+                <b>COMPLETED</b>
+              </p>
+              <div className="count-container">
+                {habitCompleted.length === 0 ? (
+                  <p> Not any! </p>
+                ) : (
+                  habitCompleted?.map((data) => (
+                    <HabitCard key={data._id} data={data} />
+                  ))
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -89,7 +115,7 @@ const mapDispatchToProp = (dispatch) => {
     closeEditModal: () => dispatch(closeEditModal()),
     callEditApi: (id) => dispatch(setEditData(id)),
     setEditId: (id) => dispatch(addId(id)),
-    clearEditId: () => dispatch(clearEditId())
+    clearEditId: () => dispatch(clearEditId()),
   };
 };
 export default connect(mapStateToProp, mapDispatchToProp)(Home);
